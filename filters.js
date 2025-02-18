@@ -85,10 +85,13 @@ export function applyFilters() {
         }
         if (destination && element.destination !== destination) return false;
 
-
         // Checking the duration
+        if(durationOptionsElement.value === "Any"){
+            return true
+        }
         if(duration && duration !== element.duration) return false;
 
+        /* Cruise element passes all conditions*/
         return true;
     });
 

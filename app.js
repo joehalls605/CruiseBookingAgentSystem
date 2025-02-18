@@ -128,5 +128,36 @@ function collapsed(){
     toggleBtn.classList.toggle("rotated");
 }
 
+// MODAL
 
+const modal = document.getElementById("modal");
+
+const dateButtonElement = document.getElementById("dateButton");
+const closeBtnElement = document.getElementById("closeBtn");
+const confirmButtonElement = document.getElementById("confirmBtn");
+
+dateButtonElement.addEventListener("click", () => {
+    modal.classList.add("visible"); // Hide modal
+});
+
+closeBtnElement.addEventListener("click", closeBtnElementHandler);
+
+function closeBtnElementHandler(){
+    modal.classList.remove("visible"); // Hide modal
+}
+
+confirmButtonElement.addEventListener("click", confirmDateOptions);
+
+function confirmDateOptions(){
+    let selectedMonths = [];
+    const checkboxes = document.querySelectorAll('#datesOptions input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked){
+            selectedMonths.push(checkbox.dataset.month);
+        }
+    });
+    closeBtnElementHandler();
+    console.log(selectedMonths);
+}
 

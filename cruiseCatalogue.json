@@ -1,100 +1,102 @@
 [
-    {
-      "cruiseTitle": "Barbados Tour",
-      "destination": "Barbados",
-      "emoji": "🇧🇧",
-      "ship": "Victoria",
-      "pricePerPerson": 1700,
-      "duration": 18,
-      "cabins": [
-        {
-          "interiorCabin": {
-            "roomsAvailable": 40,
-            "name": "Interior Cabin"
-          },
-          "oceanViewCabin": {
-            "roomsAvailable": 30,
-            "name": "Ocean View Cabin"
-          },
-          "Suite": {
-            "roomsAvailable": 20,
-            "name": "Suite"
-          }
+  {
+    "cruiseTitle": "Barbados Tour",
+    "destination": "Barbados",
+    "cruiseDate": "2024-02-01T00:00:00Z", // Barbados cruise date is already in ISO
+    "ship": "Victoria",
+    "pricePerPerson": 1700,
+    "duration": 18,
+    "cabins": [
+      {
+        "interiorCabin": {
+          "roomsAvailable": 40,
+          "name": "Interior Cabin"
+        },
+        "oceanViewCabin": {
+          "roomsAvailable": 30,
+          "name": "Ocean View Cabin"
+        },
+        "Suite": {
+          "roomsAvailable": 20,
+          "name": "Suite"
         }
-      ],
-      "daysTravelledTotal": 20
-    },
-    {
-      "cruiseTitle": "Norway Tour",
-      "destination": "Norway",
-      "ship": "Olena",
-      "pricePerPerson": 1400,
-      "duration": 13,
-      "cabins": [
-        {
-          "interiorCabin": {
-            "roomsAvailable": 25,
-            "name": "Interior Cabin"
-          },
-          "oceanViewCabin": {
-            "roomsAvailable": 20,
-              "name": "Ocean View Cabin"
-          },
-          "Suite": {
-            "roomsAvailable": 15,
-              "name": "Suite"
-          }
+      }
+    ],
+    "daysTravelledTotal": 20
+  },
+  {
+    "cruiseTitle": "Norway Tour",
+    "destination": "Norway",
+    "cruiseDate": "2024-03-15T00:00:00Z", // Generated date
+    "ship": "Olena",
+    "pricePerPerson": 1400,
+    "duration": 13,
+    "cabins": [
+      {
+        "interiorCabin": {
+          "roomsAvailable": 25,
+          "name": "Interior Cabin"
+        },
+        "oceanViewCabin": {
+          "roomsAvailable": 20,
+          "name": "Ocean View Cabin"
+        },
+        "Suite": {
+          "roomsAvailable": 15,
+          "name": "Suite"
         }
-      ],
-      "daysTravelledTotal": 15
-    },
-    {
-      "cruiseTitle": "Lisbon Tour",
-      "destination": "Lisbon",
-      "ship": "Bella",
-      "pricePerPerson": 1200,
-      "duration": 16,
-      "cabins": [
-        {
-          "interiorCabin": {
-            "roomsAvailable": 30,
-            "name": "Interior Cabin"
-          },
-          "oceanViewCabin": {
-            "roomsAvailable": 40,
-            "name": "Ocean View Cabin"
-          },
-          "Suite": {
-            "roomsAvailable": 20,
-            "name": "Suite"
-          }
+      }
+    ],
+    "daysTravelledTotal": 15
+  },
+  {
+    "cruiseTitle": "Lisbon Tour",
+    "destination": "Lisbon",
+    "cruiseDate": "2024-04-10T00:00:00Z", // Generated date
+    "ship": "Bella",
+    "pricePerPerson": 1200,
+    "duration": 16,
+    "cabins": [
+      {
+        "interiorCabin": {
+          "roomsAvailable": 30,
+          "name": "Interior Cabin"
+        },
+        "oceanViewCabin": {
+          "roomsAvailable": 40,
+          "name": "Ocean View Cabin"
+        },
+        "Suite": {
+          "roomsAvailable": 20,
+          "name": "Suite"
         }
-      ],
-      "daysTravelledTotal": 15
-    },
-    {
-      "cruiseTitle": "Sao Paulo Tour",
-      "destination": "Brazil",
-      "ship": "Leo",
-      "pricePerPerson": 2300,
-      "duration": 30,
-      "cabins": [
-        {
-          "interiorCabin": {
-            "roomsAvailable": 10,
-            "name": "Interior Cabin"
-          },
-          "oceanViewCabin": {
-            "roomsAvailable": 20,
-            "name": "Ocean View Cabin"
-          },
-          "Suite": {
-            "roomsAvailable": 0,
-            "name": "Suite"
-          }
+      }
+    ],
+    "daysTravelledTotal": 15
+  },
+  {
+    "cruiseTitle": "Sao Paulo Tour",
+    "destination": "Brazil",
+    "cruiseDate": "2024-05-20T00:00:00Z", // Generated date
+    "ship": "Leo",
+    "pricePerPerson": 2300,
+    "duration": 30,
+    "cabins": [
+      {
+        "interiorCabin": {
+          "roomsAvailable": 10,
+          "name": "Interior Cabin"
+        },
+        "oceanViewCabin": {
+          "roomsAvailable": 20,
+          "name": "Ocean View Cabin"
+        },
+        "Suite": {
+          "roomsAvailable": 0,
+          "name": "Suite"
         }
-      ],
-      "daysTravelledTotal": 30
-    }
-  ]
-  
+      }
+    ],
+    "daysTravelledTotal": 30
+  }
+]

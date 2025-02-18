@@ -1,102 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cruise Booking System</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div id="sidebar">
-            <div class="toggle-row">
-                <div id="toggle-btn" >
-                    <img alt="chevron" src="/images/chevron.svg">
-                </div>
-            </div>
-            <div class="links-row">
-                <ul id="sidebar-links">
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="bookings.html">Bookings</a></li>
-                    <li><a href="profile.html">Account</a></li>
-                    <li><a href="settings.html">Settings</a></li>
-                </ul>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="sidebar">
+    <div class="toggle-row">
+        <div id="toggle-btn" >
+            <img alt="chevron" src="/images/chevron.svg">
         </div>
-        <div id="content-wrapper">
-        <header id="header">
-            <a href="index.html"><h1>Booking Agent System</h1></a>
-            <nav>
-                <ul id="nav-links">
-                    <li>
-                        <label for="searchInput">Search:</label>
-                        <input type="text" id="searchInput" placeholder="Enter search term...">
-                        <button id="searchButton">Search</button>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main id="main-content">
-            <div id="application">
+    </div>
+    <div class="links-row">
+        <ul id="sidebar-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="profile.html">Account</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+</div>
+<div id="content-wrapper">
+    <header id="header">
+        <a href="index.html"><h1>Booking Agent System</h1></a>
+        <nav>
+            <ul id="nav-links">
+                <li>
+                    <label for="searchInput">Search:</label>
+                    <input type="text" id="searchInput" placeholder="Enter search term...">
+                    <button id="searchButton">Search</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <div id="application">
             <div class="row">
-            <div id="filter-column">
-                <h2>Customer information</h2>
-                <label>Firstname:</label>
-                <input id="firstnameInput" type="text" placeholder="Joe" value="Joe"></input>
-                <label>Surname:</label>
-                <input id="surnameInput" type="text" placeholder="Halls" value="Halls"></input>
-                <label>Age:</label>
-                <input id="ageInput" type="text" placeholder="21" value="21"></input>
-                <!-- PRICE -->
-                 <br>
-                <label>Price (PP)</label>
-                <label>Minimum</label>
-                <input id="filterByPriceMinInput" placeholder="1300" value="1300"></input>
-                <label>Maximum</label>
-                <input id="filterByPriceMaxInput" placeholder="1800" value="1800"></input>
-                <br>
-<!--
-                <div class="price-slider">
-                    <label for="min-price">£</label>
-                    <input type="number" id="min-price" class="price-input" value="0">
-                    <input type="range" id="price-range-min" min="0" max="3500" step="1">
-                    <input type="range" id="price-range-max" min="0" max="3500" step="1">
-                    <label for="max-price">£</label>
-                    <input type="number" id="max-price" class="price-input" value="3500">
-                </div> -->
+                <div id="filter-column">
+                    <h2>Customer information</h2>
+                    <label>Firstname:</label>
+                    <input id="firstnameInput" type="text" placeholder="Joe" value="Joe"></input>
+                    <label>Surname:</label>
+                    <input id="surnameInput" type="text" placeholder="Halls" value="Halls"></input>
+                    <label>Age:</label>
+                    <input id="ageInput" type="text" placeholder="21" value="21"></input>
+                    <!-- DATE -->
+                    <button id="dateButton">Dates</button>
+                    <!-- Modal -->
+                    <div id="modal">
+                        <button id="closeBtn">close</button>
+                        <div><h3>Dates</h3></div>
+                        <div id="datesOptions">
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/01" data-year="2025" data-month="January">
+                                <label for="dates_2025/01">January</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/02" data-year="2025" data-month="February">
+                                <label for="dates_2025/02">February</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/03" data-year="2025" data-month="March">
+                                <label for="dates_2025/03">March</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/04" data-year="2025" data-month="April">
+                                <label for="dates_2025/04">April</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/05" data-year="2025" data-month="May">
+                                <label for="dates_2025/05">May</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/06" data-year="2025" data-month="June">
+                                <label for="dates_2025/06">June</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/07" data-year="2025" data-month="July">
+                                <label for="dates_2025/07">July</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/08" data-year="2025" data-month="August">
+                                <label for="dates_2025/08">August</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/09" data-year="2025" data-month="September">
+                                <label for="dates_2025/09">September</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/10" data-year="2025" data-month="October">
+                                <label for="dates_2025/10">October</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/11" data-year="2025" data-month="November">
+                                <label for="dates_2025/11">November</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" id="dates_2025/12" data-year="2025" data-month="December">
+                                <label for="dates_2025/12">December</label>
+                            </div>
+                        </div>
+                        <button id="confirmBtn">Confirm</button>
+                    </div>
 
-                <!-- DESTINATION -->
-                <label for="filterByDestination">Choose a destination</label>
-                <select id="destinationOptions" name="destinationOptions"></select>
+                    <!-- PRICE -->
+                    <br>
+                    <label>Price (PP)</label>
+                    <label>Minimum</label>
+                    <input id="filterByPriceMinInput" placeholder="1000" value="1000"></input>
+                    <label>Maximum</label>
+                    <input id="filterByPriceMaxInput" placeholder="3000" value="3000"></input>
+                    <br>
 
-                <br>
-                <!-- DURATION-->
-                <label for="filterByDuration">Choose a duration</label>
-                <select id="durationOptions" name="durationOptions"></select>
+                    <label>Price Range (PP)</label>
+                    <div class="priceInput">
+                        <div class="field">
+                            <span>Min</span>
+                            <input type="number" class="input-min" value="1000">
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field">
+                            <span>Max</span>
+                            <input type="number" class="input-max" value="7500">
+                        </div>
+                        <div class="slider">
+                            <div class="progress"></div>
+                            <div class="range-input">
+                                <input type="range" class="range-min" min="0" max="7500" value="1000">
+                                <input type="range" class="range-max" min="0" max="7500" value="7500">
+                            </div>
+                        </div>
+                    </div>
 
-                <br>
-                <button id="applyFilters">Apply filters</button>
-                <br>
-<!--                <button id="randomDiscount">Apply random discount</button>-->
-                <div id="discount">
-                    <label for="discountRange">Discount</label>
-                    <input type="range" id="discountRange" name="discountRange" min="0" max="100" value="0">
-                    <span id="discountValue">0%</span>
+
+                    <!-- DESTINATION -->
+                    <label for="filterByDestination">Choose a destination</label>
+                    <select id="destinationOptions" name="destinationOptions"></select>
+
+                    <br>
+                    <!-- DURATION-->
+                    <label for="filterByDuration">Choose a duration</label>
+                    <select id="durationOptions" name="durationOptions"></select>
+
+                    <br>
+                    <button id="applyFilters">Apply filters</button>
+                    <br>
+                    <div id="discount">
+                        <label for="discountRange">Discount</label>
+                        <input type="range" id="discountRange" name="discountRange" min="0" max="100" value="0">
+                        <span id="discountValue">0%</span>
+                    </div>
+                </div>
+                <div id="data-display-column">
+                    <div id="destinationThankYou"></div>
+                    <h2>Cruises</h2>
+                    <label for="filterByDestination">Sort by</label>
+                    <select id="sortOptions" name="sortOptions"></select>
+                    <div id="cruiseCatalogue"></div>
                 </div>
             </div>
-            <div id="data-display-column">
-                <div id="destinationThankYou"></div>
-                <h2>Cruises</h2>
-                <label for="filterByDestination">Sort by</label>
-                <select id="sortOptions" name="sortOptions"></select>
-                <!-- <button id="filterByLowPrice">Price (low to high)</button> -->
-                <div id="cruiseCatalogue"></div>
-<!--                <div id="displayBookings"></div>-->
-            </div>
         </div>
-        </div>
-        </main>
-        </div>
-        <!-- Importing main application file -->
-        <script type="module" src="app.js"></script>
-    </body>
+    </main>
+</div>
+
+<!-- Importing main application file -->
+<script type="module" src="app.js"></script>
+</body>
 </html>
