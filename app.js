@@ -32,6 +32,43 @@ if(sortByElement) {
 // DOM CONTENT LOADED
 document.addEventListener("DOMContentLoaded", function () {
 
+    // TESTING THE FETCHING USERS FROM MONGODB
+
+    const fetchUsersButton = document.getElementById("fetchUsersButton");
+    const usersDisplay = document.getElementById("usersDisplay");
+
+    if(fetchUsersButton){
+        fetchUsersButton.addEventListener("click", async () => {
+            try {
+                const response = await fetch("http://localhost:5000/users");
+                if (!response.ok) {
+                    throw new Error("Error fetching users");
+                }
+
+                const users = await response.json(); // (returned from backend) Parse the JSON response from the backend into a JavaScript array of user objects
+
+                // Clearing previous display
+                usersDisplay.innerHTML = '';
+
+                // Display users in div
+                users.forEach(user => {
+                    const userElement = document.createElement("div");
+                    userElement.textContent = `Name: ${user.name}, Email: ${user.email}, Age: ${user.age}`
+                    usersDisplay.appendChild(userElement);
+                });
+            }
+            catch(error){
+                usersDisplay.innerHTML = "Error fetching users: " + error.message;
+            }
+        })
+    }
+
+
+
+
+
+
+
     // Dark mode:
     const darkModeStatus = localStorage.getItem("darkMode");
     if(darkModeStatus === "enabled"){
