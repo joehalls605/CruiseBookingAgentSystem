@@ -1,7 +1,8 @@
-/*
-TODO:
-Sort duration filtering.
-*/
+// Test server connection
+fetch("http://localhost:5000/bookings")
+    .then(response => response.json())
+    .then(data => console.log("Direct server test:", data))
+    .catch(error => console.error("Server test error:", error));
 
 // ===================== IMPORTS =====================
 // Import functions for applying filters, search, and rendering
@@ -32,40 +33,16 @@ if (sortByElement) {
     sortByElement.addEventListener("change", sortByUpdate);
 }
 
+
+
 // ===================== DOM CONTENT LOADED =====================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
     // ===================== TESTING FETCHING USERS =====================
     const fetchUsersButton = document.getElementById("fetchUsersButton");
     const usersDisplay = document.getElementById("usersDisplay");
 
-    // Fetch users from backend when 'Fetch Users' button is clicked
-    if (fetchUsersButton) {
-        fetchUsersButton.addEventListener("click", async () => {
-            try {
-                const response = await fetch("http://localhost:5000/users");
-                if (!response.ok) {
-                    throw new Error("Error fetching users");
-                }
-
-                const users = await response.json(); // Parse the JSON response from the backend
-                localStorage.setItem("userData", JSON.stringify(users));
-
-                // Clear previous display
-                usersDisplay.innerHTML = '';
-
-                // Display fetched users
-                users.forEach(user => {
-                    const userElement = document.createElement("div");
-                    userElement.textContent = `Name: ${user.name}, Email: ${user.email}, Age: ${user.age}`;
-                    usersDisplay.appendChild(userElement);
-                });
-            } catch (error) {
-                usersDisplay.innerHTML = "Error fetching users: " + error.message;
-            }
-        });
-    }
 
     // ===================== DARK MODE AND FONT SIZE =====================
     const darkModeStatus = localStorage.getItem("darkMode");
@@ -108,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => {
-                console.error("Error loading cruise data:", error);
                 console.log("Current path:", window.location.pathname);
             });
     }
@@ -175,9 +151,9 @@ const closeBtnElement = document.getElementById("closeBtn");
 const confirmButtonElement = document.getElementById("confirmBtn");
 
 // Show the modal when the 'Select Dates' button is clicked
-dateButtonElement.addEventListener("click", () => {
-    modal.classList.add("visible");
-});
+// dateButtonElement.addEventListener("click", () => {
+//     modal.classList.add("visible");
+// });
 
 // Hide the modal when the 'Close' button is clicked
 closeBtnElement.addEventListener("click", closeBtnElementHandler);

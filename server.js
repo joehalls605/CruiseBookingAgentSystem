@@ -1,64 +1,82 @@
 // server.js handles the ongoing API operations
 
 // =================== IMPORTS ===================
-import express from 'express'; // Express.js framework for handling HTTP requests
-import {MongoClient, ServerApiVersion} from 'mongodb'; // MongoDB client to interact with MongoDB
-import dotenv from 'dotenv'; // Loads enviroment variables from .env file
-import cors from 'cors'; // Middlewaare to handle Cross-Origin Resource Sharing (CORS)
+import mongoose from 'mongoose';
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 // =================== CONFIGURATION ===================
-// Load enviroment variables
+
+// Loads environment variables
 dotenv.config();
 console.log('MONGO_URI value:', process.env.MONGO_URI);
 
-// Set up Express app and middleware
+// Express app instance created
 const app = express(); // Intialise the Express app
-app.use(cors()); // Enable CORS to allow requests from different origins
-app.use(express.json()); // Parse incoming requests with JSON payloads
 
-// Setup server port and MongoDB connection string
+// Middleware
+app.use(express.json()); // Middleware to parse JSON request body
+app.use(cors()); // Enable CORS for cross-origin requests
+
+// Server port and MongoDB connection string
 const PORT = process.env.PORT || 5000; // Set server port (from environment or default to 5000)
 const uri = process.env.MONGO_URI; // MongoDB connection string (loaded from .env)
-const dbName = 'CruiseBookingSystem'; // The database to use in MongoDB
-const usersCollection = 'users';  // The collection to fetch users from
 
-// =================== DATABASE CONNECTION ===================
-const client = new MongoClient(uri, { // Creates a new MongoClient with the provided URI
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
+// Connecting to MongoDB
+mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Connected to MongoDB"))
+    .catch(err => console.log("Could not connect to MongoDB", err));
+
+mongoose.connection.on('connected', () => {
+    console.log(`Mongoose connected to ${mongoose.connection.db.databaseName}`);
 });
 
-// Establish a connection to the MongoDB server
-async function connectDB() {
-    try {
-        await client.connect(); // Connect to MongoDB
-        console.log("Connected to MongoDB");
-    } catch (error) {
-        console.error("Could not connect to MongoDB:", error);
-        throw error;
+// Booking Schema
+const bookingSchema = {
+    bookingId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    passengerName: {
+        type: String,
+        required: true
+    },
+    cruiseDestination: {    // Make sure this matches your DB field
+        type: String,
+        required: true
+    },
+    departureDate: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ["Confirmed", "Pending", "Cancelled"],
+        required: true
     }
-}
+};
 
-// =================== HTTP REQUESTS ===================
-
-// the GET route to fetch all users from the database
+const Booking = mongoose.model('Booking', bookingSchema, 'bookings');
 
 // The frontend request fetch triggers this async
-app.get('/users', async (req, res) => {
+app.get("/bookings", async(req, res) => {
     try {
-        await connectDB(); // all connectDB to ensure MongoDB is connected
-        const db = client.db(dbName); // // Access the specific database ('CruiseBookingSystem') declared earlier
+        console.log("Database connection state:", mongoose.connection.readyState);
+        console.log("Database name:", mongoose.connection.db.databaseName);
+        console.log("Fetching bookings from collection 'bookings'...");
 
-        // Fetch all users from the 'users' collection and convert the result to an array
-        const users = await db.collection(usersCollection).find().toArray();
+        // List all collections to verify
+        const collections = await mongoose.connection.db.listCollections().toArray();
+        console.log("Available collections:", collections.map(c => c.name));
 
-        res.json(users); // Send the users data as a JSON response to the client
-    } catch(error) {
-        console.error("Error in /users route:", error);
-        res.status(500).json({ message: "Error fetching users", error: error.message });
+        const bookings = await Booking.find();
+        console.log("Bookings found:", bookings.length, bookings);
+        res.json(bookings);
+    } catch(err) {
+        console.error("Error fetching bookings:", err);
+        res.status(500).send("Server Error");
     }
 });
 

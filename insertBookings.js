@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Connection URL and Database Name from the .env file
-const url = process.env.MONGO_URI;
+const url = process.env.MONGO_URI; // is used to retrieve the value of the MONGO_URI environment variable.
 const dbName = "CruiseBookingSystem";
 
 const bookingData = [
