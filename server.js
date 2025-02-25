@@ -61,6 +61,8 @@ const bookingSchema = {
 const Booking = mongoose.model('Booking', bookingSchema, 'bookings');
 
 // The frontend request fetch triggers this async
+
+// GET BOOKINGS
 app.get("/bookings", async(req, res) => {
     try {
         console.log("Database connection state:", mongoose.connection.readyState);
@@ -72,13 +74,46 @@ app.get("/bookings", async(req, res) => {
         console.log("Available collections:", collections.map(c => c.name));
 
         const bookings = await Booking.find();
-        console.log("Bookings found:", bookings.length, bookings);
         res.json(bookings);
     } catch(err) {
         console.error("Error fetching bookings:", err);
         res.status(500).send("Server Error");
     }
 });
+
+// POST NEW BOOKING
+app.post("/bookings", async (req, res) => {
+    try{
+        // Destructuring (pull out) the data from req.body so I can use the variables
+        const { bookingId, passengerName, cruiseDestination, departureDate, status} = req.body;
+
+        // Checking all fields are present
+        if(!bookingId || !passengerName || !cruiseDestination || !departureDate || !status){
+            return res.status(400).send("All fields are required");
+        }
+
+        // Create a new booking instance
+        const newBooking = new Booking({
+            bookingId,
+            passengerName,
+            cruiseDestination,
+            departureDate,
+            status
+        });
+
+        // Save to database
+        await newBooking.save();
+        res.status(201).send("Booking created successfully");
+    }catch(err){
+        console.log("Error creating booking", err);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+
+
+
 
 // =================== SERVER STARTUP ===================
 // Start the Express server on the specified port
