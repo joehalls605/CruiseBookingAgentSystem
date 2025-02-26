@@ -110,6 +110,25 @@ app.post("/bookings", async (req, res) => {
     }
 });
 
+// DELETE - Delete a booking by _id
+
+app.delete("/bookings/:id", async (req,res) => {
+    try{
+        const bookingId = req.params.id;
+
+        // Find the booking by _id and delete it
+        const deletedBooking = await Booking.findByIdAndDelete(bookingId);
+
+        if(!deletedBooking){
+            return res.status(404).send("Booking not found");
+        }
+        res.status(200).send("Booking deleted successfully");
+    }catch(err){
+        console.error("Error deleting bookings", err);
+        res.status(500).send("Server Error");
+    }
+});
+
 
 
 
