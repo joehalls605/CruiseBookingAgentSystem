@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta lang="en" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Booking System</title>
+    <link rel="stylesheet" href="/CruiseBookingSystem/styles.css">
+    <link rel="stylesheet" href="/CruiseBookingSystem/profile.css">
+    <link rel="stylesheet" href="/CruiseBookingSystem/bookings.css">
+</head>
+<body>
+<div id="sidebar">
+    <div class="toggle-row">
+        <img id="toggle-btn" alt="chevron" src="/CruiseBookingSystem/images/chevron.svg">
+    </div>
+    <div class="links-row">
+        <ul id="sidebar-links">
+            <li><a href="/CruiseBookingSystem/index.html">Dashboard</a></li>
+            <li><a href="/CruiseBookingSystem/bookings.html">Bookings</a></li>
+            <li><a href="/CruiseBookingSystem/profile.html">Account</a></li>
+            <li><a href="/CruiseBookingSystem/settings.html">Settings</a></li>
+        </ul>
+    </div>
+</div>
+<div id="content-wrapper">
+    <header id="header">
+        <a href="/CruiseBookingSystem/index.html"><h1>Booking Agent System</h1></a>
+        <nav>
+            <ul id="nav-links">
+            </ul>
+        </nav>
+    </header>
+<div>
+    <p>Ensure all bookings are updated regularly, including payment statuses, passenger details, and special requests, to avoid disruptions to travel plans.</p>
+    <h2>Add New Booking</h2>
+    <form id="new-booking-form">
+        <input type="text" id="newBookingId" placeholder="Booking ID" required>
+        <input type="text" id="newPassengerName" placeholder="Passenger Name" required>
+        <input type="text" id="newCruiseDestination" placeholder="Cruise Destination" required>
+        <input type="date" id="newDepartureDate" placeholder="Departure Date" required>
+        <select id="newStatus" required>
+            <option value="" disabled selected>Select Status</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <button type="submit">Add Booking</button>
+    </form>
+
+    <h2>Customer Base</h2>
+    <table id="booking-table">
+        <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Passenger Name</th>
+            <th>Cruise Destination</th>
+            <th>Departure Date</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody id="booking-table-body">
+        </tbody>
+    </table>
+
+</div>
+</div>
+<script type="module" src="app.js"></script>
+<script type="module" src="bookings.js"></script>
+</body>
+</html>
