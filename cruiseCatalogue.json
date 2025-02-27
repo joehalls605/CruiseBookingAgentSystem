@@ -2,7 +2,7 @@
   {
     "cruiseTitle": "Barbados Tour",
     "destination": "Barbados",
-    "cruiseDate": "2024-02-01T00:00:00Z", // Barbados cruise date is already in ISO
+    "cruiseDate": "2024-02-01T00:00:00Z",
     "ship": "Victoria",
     "pricePerPerson": 1700,
     "duration": 18,
@@ -27,7 +27,7 @@
   {
     "cruiseTitle": "Norway Tour",
     "destination": "Norway",
-    "cruiseDate": "2024-03-15T00:00:00Z", // Generated date
+    "cruiseDate": "2024-03-15T00:00:00Z",
     "ship": "Olena",
     "pricePerPerson": 1400,
     "duration": 13,
@@ -52,7 +52,7 @@
   {
     "cruiseTitle": "Lisbon Tour",
     "destination": "Lisbon",
-    "cruiseDate": "2024-04-10T00:00:00Z", // Generated date
+    "cruiseDate": "2024-04-10T00:00:00Z",
     "ship": "Bella",
     "pricePerPerson": 1200,
     "duration": 16,
@@ -77,7 +77,7 @@
   {
     "cruiseTitle": "Sao Paulo Tour",
     "destination": "Brazil",
-    "cruiseDate": "2024-05-20T00:00:00Z", // Generated date
+    "cruiseDate": "2024-05-20T00:00:00Z",
     "ship": "Leo",
     "pricePerPerson": 2300,
     "duration": 30,

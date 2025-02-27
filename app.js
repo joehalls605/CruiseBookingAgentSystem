@@ -156,14 +156,18 @@ const confirmButtonElement = document.getElementById("confirmBtn");
 // });
 
 // Hide the modal when the 'Close' button is clicked
-closeBtnElement.addEventListener("click", closeBtnElementHandler);
+if(closeBtnElement){
+    closeBtnElement.addEventListener("click", closeBtnElementHandler);
+}
 
 function closeBtnElementHandler() {
     modal.classList.remove("visible");
 }
 
 // Collect selected months when the 'Confirm' button is clicked
-confirmButtonElement.addEventListener("click", confirmDateOptions);
+if(confirmButtonElement){
+    confirmButtonElement.addEventListener("click", confirmDateOptions);
+}
 
 function confirmDateOptions() {
     let selectedMonths = [];
