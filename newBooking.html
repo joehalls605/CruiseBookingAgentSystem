@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="sidebar">
+    <div class="toggle-row">
+        <div id="toggle-btn">
+            <img alt="chevron" src="/images/chevron.svg">
+        </div>
+    </div>
+    <div class="links-row">
+        <ul id="sidebar-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="profile.html">Account</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="content-wrapper">
+    <header id="header">
+        <a href="index.html"><h1>Booking Agent System</h1></a>
+        <nav>
+            <ul id="nav-links"></ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <div id="application">
+            <h2>New Booking</h2>
+            <div id="customerDetails">
+                <h3>Customer Information</h3>
+                <p><strong>Name:</strong> <span id="customerName"></span></p>
+                <p><strong>Age:</strong> <span id="customerAge"></span></p>
+            </div>
+
+            <div id="cruiseDetails">
+                <h3>Selected Cruise</h3>
+                <div id="selectedCruise"></div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- Importing main application file -->
+<script type="module" src="newBooking.js"></script>
+
+</body>
+</html>

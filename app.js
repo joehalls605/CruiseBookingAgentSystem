@@ -99,6 +99,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+// BOOK BUTTON
+
+document.addEventListener("click", function(event){
+    if(event.target.classList.contains("book-button")){
+
+    }
+});
+
 // ===================== EVENT HANDLERS =====================
 
 // Handle Sort Change

@@ -57,12 +57,6 @@ export function applyFilters() {
     const destination = destinationElement.value;
     const selectedDestination = storeDestination();
 
-    const firstname = firstnameElement.value.trim();
-    const surname = surnameElement.value.trim();
-    
-    const age = Number(ageElement.value) || 0;
-    console.log("THE AGE", age);
-
     // Ternary practice
     let isSelectedDestinationTrue = (selectedDestination) ? "Yes it is true" : "No it is not true";
     console.log(isSelectedDestinationTrue);
@@ -115,13 +109,11 @@ export function applyFilters() {
     })
 
     console.log(discountedCatalogue);
+    // exporting discounted catalogue for use in newBooking.js
 
     // Combining the filtered catalogue with the name and age into a single booking object
 
     const bookingDetails = {
-        customerFirstName: firstname,
-        surname: surname,
-        customerAge: age,
         bookings: discountedCatalogue
     };
 
