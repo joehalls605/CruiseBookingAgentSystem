@@ -287,10 +287,17 @@ input[type="range"]::-webkit-slider-thumb{
 
 #discount{
     margin-top: 5px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
 #discountRange{
-    margin-top: 15px;
+    width:240px;
+    margin-top: 50px;
+}
+#discountValue{
+    margin-top:30px;
 }
 
 #modal{
