@@ -9,9 +9,11 @@ export function initModal(){
     const closeBtnElement = document.getElementById("closeBtn");
     const confirmButtonElement = document.getElementById("confirmBtn");
 
-dateButtonElement.addEventListener("click", () => {
-    modal.classList.add("visible");
-});
+if(dateButtonElement){
+    dateButtonElement.addEventListener("click", () => {
+        modal.classList.add("visible");
+    });
+}
 
 // Hide the modal when the 'Close' button is clicked
     if(closeBtnElement){

@@ -20,7 +20,7 @@ export function renderCruiseCatalogue(cruiseCatalogue) {
                 <li>Deluxe Suite: ${cabin.Suite.roomsAvailable}</li>
             `).join('')}
         </ul>
-        <button>Book</button>
+        <button class="book-button" data-id="${item.id}">Book</button>
         </div>
     `).join("");
 

@@ -103,6 +103,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 document.addEventListener("click", function(event){
     if(event.target.classList.contains("book-button")){
+        const cruiseId = event.target.getAttribute("data-id"); // Get cruise ID
+
+        // Find the cruise in the catalogue
+        const selectedCruise = cruiseCatalogue.find(cruise => cruise.id === cruiseId);
+
+        if(selectedCruise){
+            localStorage.setItem("selectedCruise", JSON.stringify(selectedCruise));
+            window.location.href = "newBooking.html";
+        }
 
     }
 });
@@ -144,4 +153,4 @@ function sortByUpdate() {
 fetch("http://localhost:5000/bookings")
     .then(response => response.json())
     .then(data => console.log("Direct server test:", data))
-    .catch(error => console.error("Server test error:", error));
+    .catch(error => console.error("Server test error - the server has not been turned on", error));

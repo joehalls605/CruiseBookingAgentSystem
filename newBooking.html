@@ -33,23 +33,26 @@
     <main id="main-content">
         <div id="application">
             <h2>New Booking</h2>
-            <div id="customerDetails">
-                <h3>Customer Information</h3>
-                <p><strong>Name:</strong> <span id="customerName"></span></p>
-                <p><strong>Age:</strong> <span id="customerAge"></span></p>
+            <div id="booking-details">
+                <h3 id="tourTitle"></h3>
+                <p>Ship: <span id="shipName"></span></p>
+                <p>Duration: <span id="duration"></span></p>
+                <p>Price: <span id="price"></span></p>
+                <h4>Cabin Rooms Available:</h4>
+                <ul>
+                    <li id="interiorCabin"></li>
+                    <li id="oceanViewCabin"></li>
+                    <li id="suiteCabin"></li>
+                </ul>
+                <button id="confirmBooking">Confirm Booking</button>
             </div>
-
-            <div id="cruiseDetails">
-                <h3>Selected Cruise</h3>
-                <div id="selectedCruise"></div>
-            </div>
-
         </div>
     </main>
 </div>
 
 <!-- Importing main application file -->
 <script type="module" src="newBooking.js"></script>
-
+<!--<script type="module" src="app.js"></script>-->
+<script type="module" src="components/sidebar.js"></script>
 </body>
 </html>
