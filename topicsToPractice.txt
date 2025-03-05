@@ -1,8 +1,0 @@
-event.target.value - DONE
-
-practice fetching data with json file more - DOING
-
-mapping and displaying content.
-dropdowns, select and options
-
-practice moduling files and breaking them out now i've finally got import and export to work.

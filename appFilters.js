@@ -1,26 +1,12 @@
 // Import needed functions
-import { renderCruiseCatalogue } from './render.js';
-import { storeDestination } from './destination.js';
+import { renderCruiseCatalogue } from './appRenderFunctions.js';
 import { cruiseCatalogue } from './app.js';
-import { destinationThankYou } from './render.js';
+import { destinationThankYou } from './appRenderFunctions.js';
 
 const applyFiltersButton = document.getElementById("applyFilters");
 if (applyFiltersButton) {
     applyFiltersButton.addEventListener("click", applyFilters);
 }
-
-//
-// window.addEventListener('DOMContentLoaded', () => {
-//     applyFilters(0); // Apply no discount initially
-// });
-
-const randomDiscountElement = document.getElementById("randomDiscount");
-// randomDiscountElement.addEventListener("click", randomDiscount);
-
-// const filterByLowPrice = document.getElementById("filterByLowPrice");
-// filterByLowPrice.addEventListener("click", sortByLowPrice);
-
-// DISCOUNT
 
 const discountRange = document.getElementById("discountRange");
 const discountValue = document.getElementById("discountValue");

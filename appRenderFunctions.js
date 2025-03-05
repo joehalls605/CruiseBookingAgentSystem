@@ -1,11 +1,8 @@
 // Render cruise catalogue and destinations
 export function renderCruiseCatalogue(cruiseCatalogue) {
+
     const cruiseCatalogueElement = document.getElementById("cruiseCatalogue");
 
-    if(!cruiseCatalogueElement){
-        console.error("Error: cruiseCatalogue element not found.");
-        return;
-    }
     const html = cruiseCatalogue.map(item => `
         <div class="cruise-item">
         <h3>${item.cruiseTitle}</h3>

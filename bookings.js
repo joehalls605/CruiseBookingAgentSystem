@@ -58,6 +58,8 @@ async function initialiseBookings() {
 
 document.addEventListener("DOMContentLoaded", initialiseBookings);
 
+// CREATING A NEW BOOKING
+
 document.getElementById("new-booking-form").addEventListener("submit", async function(event){
     event.preventDefault(); // prevents the default form submission
 

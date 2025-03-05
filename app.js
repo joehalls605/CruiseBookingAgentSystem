@@ -1,7 +1,7 @@
 // ===================== IMPORTS =====================
 // Import functions for applying filters, search, and rendering
-import { applyFilters } from './filters.js';
-import { applySearch } from './search.js';
+import { applyFilters } from './appFilters.js';
+import { applySearch } from './components/search.js';
 import { initSidebar } from './components/sidebar.js';
 import { initModal } from './components/modal.js';
 import {
@@ -9,7 +9,7 @@ import {
     renderCruiseDestinations,
     renderDurationOptions,
     sortByOptionsRender
-} from './render.js';
+} from './appRenderFunctions.js';
 
 // ===================== GLOBAL VARIABLES =====================
 export let cruiseCatalogue = []; // Holds the cruise catalogue data
@@ -20,31 +20,28 @@ initModal();
 
 // ===================== EVENT LISTENERS =====================
 
-// Apply Filters
+// APPLY FILTERS BUTTON
 const applyFiltersElement = document.getElementById("applyFilters");
 if (applyFiltersElement) {
     applyFiltersElement.addEventListener("click", applyFilters);
 }
 
-// Search Button
+// SEARCH BUTTON
 const searchButtonElement = document.getElementById("searchButton");
 if (searchButtonElement) {
     searchButtonElement.addEventListener("click", applySearch);
 }
 
-// Sort By Dropdown
+// SORT BY DROPDOWN
 const sortByElement = document.getElementById("sortOptions");
 if (sortByElement) {
     sortByElement.addEventListener("change", sortByUpdate);
 }
 
 // ===================== DOM CONTENT LOADED =====================
-
 document.addEventListener("DOMContentLoaded", async function () {
-
     // ===================== DARK MODE AND FONT SIZE =====================
     const darkModeStatus = localStorage.getItem("darkMode");
-
     if (darkModeStatus === "enabled") {
         document.documentElement.classList.add("darkMode");
     }
@@ -57,62 +54,44 @@ document.addEventListener("DOMContentLoaded", async function () {
         fontSizeElement.value = fontStatus;
     }
 
-    // ===================== CHECK USER LOGIN =====================
-    const loggedIn = localStorage.getItem("loggedIn");
+    // Fetch cruise data
+    fetch("./data/cruiseCatalogue.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Parse the JSON response and update the catalogue
+            cruiseCatalogue = data;
+            console.log(cruiseCatalogue);
 
-    if (loggedIn) {
-        window.location.href = "login.html"; // Redirect to login page if user is logged in
-    } else {
-        // Fetch cruise data if not logged in
-        fetch(
-            window.location.pathname.includes("bookings.html")
-                ? "/CruiseBookingSystem/cruiseCatalogue.json"
-                : "./cruiseCatalogue.json"
-        )
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Parse the JSON response and update the catalogue
-                cruiseCatalogue = data;
-                console.log(cruiseCatalogue);
-
-                // Only render cruise data if not on profile or settings pages
-                if (
-                    !window.location.pathname.includes("bookings.html") &&
-                    !window.location.pathname.includes("profile.html") &&
-                    !window.location.pathname.includes("settings.html")
-                ) {
-                    renderCruiseCatalogue(cruiseCatalogue); // Render cruise catalogue
-                    renderCruiseDestinations(cruiseCatalogue.map(item => item.destination)); // Render destination dropdown
-                    renderDurationOptions(cruiseCatalogue.map(item => item.duration)); // Render duration filter
-                    sortByOptionsRender(); // Render sorting options
-                    console.log("Cruise data loaded and DOM initialised.");
-                }
-            })
-            .catch(error => {
-                console.log("Current path:", window.location.pathname);
-            });
-    }
+            // Only render cruise data if not on profile or settings pages
+            renderCruiseCatalogue(cruiseCatalogue); // Render cruise catalogue
+            renderCruiseDestinations(cruiseCatalogue.map(item => item.destination)); // Render destination dropdown
+            renderDurationOptions(cruiseCatalogue.map(item => item.duration)); // Render duration filter
+            sortByOptionsRender(); // Render sorting options
+            console.log("Cruise data loaded and DOM initialised.");
+        })
+        .catch(error => {
+            console.log("Current path:", window.location.pathname);
+            console.error("Error fetching data:", error);
+        });
 });
 
-// BOOK BUTTON
-
-document.addEventListener("click", function(event){
-    if(event.target.classList.contains("book-button")){
+// ===================== BOOK BUTTON =====================
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("book-button")) {
         const cruiseId = event.target.getAttribute("data-id"); // Get cruise ID
 
         // Find the cruise in the catalogue
         const selectedCruise = cruiseCatalogue.find(cruise => cruise.id === cruiseId);
 
-        if(selectedCruise){
+        if (selectedCruise) {
             localStorage.setItem("selectedCruise", JSON.stringify(selectedCruise));
             window.location.href = "newBooking.html";
         }
-
     }
 });
 
@@ -149,7 +128,6 @@ function sortByUpdate() {
 }
 
 // ===================== SERVER CONNECTION TEST =====================
-
 fetch("http://localhost:5000/bookings")
     .then(response => response.json())
     .then(data => console.log("Direct server test:", data))
