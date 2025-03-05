@@ -28,9 +28,7 @@
         <nav>
             <ul id="nav-links">
                 <li>
-                    <label for="searchInput">Search:</label>
-                    <input type="text" id="searchInput" placeholder="Enter search term...">
-                    <button id="searchButton">Search</button>
+
                 </li>
             </ul>
         </nav>
@@ -39,15 +37,7 @@
         <div id="application">
             <div class="row">
                 <div id="filter-column">
-<!--                    <h2>Customer information</h2>-->
-<!--                    <label>Firstname:</label>-->
-<!--                    <input id="firstnameInput" type="text" placeholder="Joe" value="Joe"></input>-->
-<!--                    <label>Surname:</label>-->
-<!--                    <input id="surnameInput" type="text" placeholder="Halls" value="Halls"></input>-->
-<!--                    <label>Age:</label>-->
-<!--                    <input id="ageInput" type="text" placeholder="21" value="21"></input>-->
-                    <!-- DATE -->
-                    <button id="dateButton">Choose a month</button>
+
                     <!-- Modal -->
                     <div id="modal">
                         <button id="closeBtn">close</button>
@@ -105,55 +95,74 @@
                         <button id="confirmBtn">Confirm</button>
                     </div>
 
-                    <!-- PRICE -->
-                    <br>
-                    <label>Price (PP)</label>
-                    <label>Minimum</label>
-                    <input id="filterByPriceMinInput" placeholder="1000" value="1000"></input>
-                    <label>Maximum</label>
-                    <input id="filterByPriceMaxInput" placeholder="3000" value="3000"></input>
-                    <br>
 
-                    <label>Price Range (PP)</label>
-                    <div class="slider">
-                        <div class="slider-endpoints">
-                            <div class="endpoint"></div>
-                            <div class="endpoint"></div>
-                        </div>
-                        <div class="progress"></div>
-                        <div class="range-input">
-                            <input type="range" class="range-min" min="0" max="7500" value="1000" step="100">
-                            <input type="range" class="range-max" min="0" max="7500" value="7500" step="100">
-                        </div>
-                        <div class="price-input">
-                            <input type="number" class="input-min" value="1000">
-                            <input type="number" class="input-max" value="7500">
+                    <h2>Filter</h2>
+
+                    <!-- DESTINATION -->
+                    <div id="filterByDestination">
+                        <label for="destinationOptions">Choose a destination</label>
+                    <select id="destinationOptions" name="destinationOptions"></select>
+                    </div>
+
+                    <!-- DURATION-->
+                   <div id="filterByDuration">
+                       <label for="durationOptions">Choose a duration</label>
+                       <select id="durationOptions" name="durationOptions"></select>
+                   </div>
+
+                    <!-- PRICE -->
+                    <div id="filterByPrice">
+                        <label>Price (PP)</label>
+                        <label>Minimum</label>
+                        <input id="filterByPriceMinInput" placeholder="1000" value="1000"></input>
+                        <label>Maximum</label>
+                        <input id="filterByPriceMaxInput" placeholder="3000" value="3000"></input>
+
+                        <div id="filterBySlider">
+                            <label>Price Range (PP)</label>
+                            <div class="slider">
+                                <div class="slider-endpoints">
+                                    <div class="endpoint"></div>
+                                    <div class="endpoint"></div>
+                                </div>
+                                <div class="progress"></div>
+                                <div class="range-input">
+                                    <input type="range" class="range-min" min="0" max="7500" value="1000" step="100">
+                                    <input type="range" class="range-max" min="0" max="7500" value="7500" step="100">
+                                </div>
+                                <div class="price-input">
+                                    <input type="number" class="input-min" value="1000">
+                                    <input type="number" class="input-max" value="7500">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <div id="filterByDate">
+                        <button id="dateButton">Choose a month</button>
+                    </div>
 
-
-                    <!-- DESTINATION -->
-                    <label for="filterByDestination">Choose a destination</label>
-                    <select id="destinationOptions" name="destinationOptions"></select>
-
-                    <br>
-                    <!-- DURATION-->
-                    <label for="filterByDuration">Choose a duration</label>
-                    <select id="durationOptions" name="durationOptions"></select>
-
-                    <br>
-                    <button id="applyFilters">Apply filters</button>
-                    <br>
-                    <div id="discount">
+                    <div id="applyDiscount">
                         <label for="discountRange">Apply Discount:</label>
                         <input type="range" id="discountRange" name="discountRange" min="0" max="100" value="0">
                         <p id="discountValue">0%</p>
                     </div>
+
+                    <button id="applyFilters">Apply filters</button>
+                    <br>
+
                 </div>
                 <div id="data-display-column">
-                    <div id="destinationThankYou"></div>
-                    <h2>Cruises</h2>
+                    <div class="data-display-row">
+                        <div class="data-display-item-title">
+                            <h2>Cruises</h2>
+                        </div>
+                        <div class="data-display-item-search">
+                            <label for="searchInput">Search:</label>
+                            <input type="text" id="searchInput" placeholder="Enter search term...">
+                            <button id="searchButton">Search</button>
+                        </div>
+                    </div>
                     <label for="filterByDestination">Sort by</label>
                     <select id="sortOptions" name="sortOptions"></select>
                     <div id="cruiseCatalogue"></div>
