@@ -7,6 +7,7 @@
     "pricePerPerson": 1700,
     "destination": "Barbados",
     "departureDate": "2025-01-15",
+    "imageUrl": "images/destinationImages/barbados.jpg",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 40 },
@@ -23,6 +24,7 @@
     "pricePerPerson": 1400,
     "destination": "Norway",
     "departureDate": "2025-07-10",
+    "imageUrl": "images/destinationImages/norway.jpg",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 25 },
@@ -39,6 +41,7 @@
     "pricePerPerson": 1200,
     "destination": "Lisbon",
     "departureDate": "2025-08-05",
+    "imageUrl": "images/destinationImages/lisbon.jpg",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 35 },
@@ -49,12 +52,13 @@
   },
   {
     "id": "cruise-004",
-    "cruiseTitle": "Caribbean Adventure",
+    "cruiseTitle": "Fiji Paradise",
     "ship": "The Harmony",
     "duration": 15,
     "pricePerPerson": 1600,
-    "destination": "Caribbean",
+    "destination": "Fiji",
     "departureDate": "2025-09-20",
+    "imageUrl": "images/destinationImages/fiji.jpg",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 50 },
@@ -65,12 +69,13 @@
   },
   {
     "id": "cruise-005",
-    "cruiseTitle": "Mediterranean Escape",
+    "cruiseTitle": "Thailand Odyssey",
     "ship": "The Majesty",
     "duration": 14,
     "pricePerPerson": 1500,
-    "destination": "Mediterranean",
+    "destination": "Thailand",
     "departureDate": "2025-10-12",
+    "imageUrl": "images/destinationImages/thailand.jpg",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 45 },

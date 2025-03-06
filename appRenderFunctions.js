@@ -5,6 +5,7 @@ export function renderCruiseCatalogue(cruiseCatalogue) {
 
     const html = cruiseCatalogue.map(item => `
         <div class="cruise-item">
+        <img class="cruise-item-image" src="${item.imageUrl}">
         <h3>${item.cruiseTitle}</h3>
         <p>The ${item.ship}</p>
         <p>${item.duration} nights</p>
