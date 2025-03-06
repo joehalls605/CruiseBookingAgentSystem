@@ -6,6 +6,7 @@
     "duration": 18,
     "pricePerPerson": 1700,
     "destination": "Barbados",
+    "departureDate": "2025-01-15",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 40 },
@@ -21,6 +22,7 @@
     "duration": 12,
     "pricePerPerson": 1400,
     "destination": "Norway",
+    "departureDate": "2025-07-10",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 25 },
@@ -36,6 +38,7 @@
     "duration": 10,
     "pricePerPerson": 1200,
     "destination": "Lisbon",
+    "departureDate": "2025-08-05",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 35 },
@@ -51,6 +54,7 @@
     "duration": 15,
     "pricePerPerson": 1600,
     "destination": "Caribbean",
+    "departureDate": "2025-09-20",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 50 },
@@ -66,6 +70,7 @@
     "duration": 14,
     "pricePerPerson": 1500,
     "destination": "Mediterranean",
+    "departureDate": "2025-10-12",
     "cabins": [
       {
         "interiorCabin": { "roomsAvailable": 45 },

@@ -2,7 +2,7 @@
 /node_modules
 
 # Enviroment variables
-.env
+server/.env
 
 logs
 *.log

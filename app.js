@@ -3,7 +3,7 @@
 import { applyFilters } from './appFilters.js';
 import { applySearch } from './components/search.js';
 import { initSidebar } from './components/sidebar.js';
-import { initModal } from './components/modal.js';
+import { initModal } from './components/dateModal.js';
 import {
     renderCruiseCatalogue,
     renderCruiseDestinations,

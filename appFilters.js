@@ -1,7 +1,8 @@
 // Import needed functions
 import { renderCruiseCatalogue } from './appRenderFunctions.js';
 import { cruiseCatalogue } from './app.js';
-import { destinationThankYou } from './appRenderFunctions.js';
+import {getSelectedMonths} from './components/dateModal.js';
+import {storeDestination} from './storeDestination.js';
 
 const applyFiltersButton = document.getElementById("applyFilters");
 if (applyFiltersButton) {
@@ -66,13 +67,28 @@ export function applyFilters() {
         if (destination && element.destination !== destination) return false;
 
         // Checking the duration
-        if(durationOptionsElement.value === "Any"){
-            return true
+        if(duration === 0 || element.duration === duration){
+            return true;
         }
-        if(duration && duration !== element.duration) return false;
 
-        /* Cruise element passes all conditions*/
+        const selectedMonths = getSelectedMonths();
+
+        if(!selectedMonths || selectedMonths.length === 0){
+            return true;
+        }
+
+        const departureDate = element.departureDate; // 2025-10-12
+        // Convert departureDate to a month name
+        const dateObj = new Date(departureDate);
+        // Converts the month to its full name
+        const monthName = dateObj.toLocaleString("en-US", {month: "long"});
+
+        if(!selectedMonths.includes(monthName)){
+            return false;
+        }
+        // Passes all conditions
         return true;
+        /* Cruise element passes all conditions*/
     });
 
     const discountPercentage = Number(discountRange.value) || 0;
@@ -102,10 +118,6 @@ export function applyFilters() {
     const bookingDetails = {
         bookings: discountedCatalogue
     };
-
-    // processBooking(bookingDetails);
-    
-    destinationThankYou(selectedDestination);
 
     renderCruiseCatalogue(discountedCatalogue);  // Render filtered results
 }

@@ -1,17 +1,18 @@
-
 // ===================== MODAL DIALOG =====================
+
+let selectedMonths = [];
 
 export function initModal(){
 
 // Modal elements
-    const modal = document.getElementById("modal");
+    const dateModal = document.getElementById("modal");
     const dateButtonElement = document.getElementById("dateButton");
     const closeBtnElement = document.getElementById("closeBtn");
     const confirmButtonElement = document.getElementById("confirmBtn");
 
 if(dateButtonElement){
     dateButtonElement.addEventListener("click", () => {
-        modal.classList.add("visible");
+        dateModal.classList.add("visible");
     });
 }
 
@@ -21,7 +22,7 @@ if(dateButtonElement){
     }
 
     function closeBtnElementHandler() {
-        modal.classList.remove("visible");
+        dateModal.classList.remove("visible");
     }
 
 // Collect selected months when the 'Confirm' button is clicked
@@ -37,9 +38,15 @@ if(dateButtonElement){
             if (checkbox.checked) {
                 selectedMonths.push(checkbox.dataset.month);
             }
+            getSelectedMonths(selectedMonths);
         });
         closeBtnElementHandler(); // Hide the modal after confirming
         console.log(selectedMonths); // Log selected months
     }
-
 }
+
+export function getSelectedMonths(selectedMonths) {
+  return selectedMonths;
+}
+
+

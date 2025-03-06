@@ -65,23 +65,6 @@ export function renderDurationOptions(cruiseDurations){
     })
 }
 
-export function destinationThankYou(destination){
-    const destinationThankYou = document.getElementById("destinationThankYou");
-
-    switch(destination){
-        case "Barbados":
-            destinationThankYou.textContent = "Thank you for choosing Barbados!";
-            break;
-        case "Norway":
-            destinationThankYou.textContent = "Thank you for choosing Norway!";
-            break;
-        case "Lisbon":
-            destinationThankYou.textContent = "Thank you for choosing Lisbon!";
-            break;
-
-    }
-}
-
 export function sortByOptionsRender(){
     const sortByElement = document.getElementById("sortOptions");
     sortByElement.innerHTML = "";
