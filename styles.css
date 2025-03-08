@@ -104,8 +104,7 @@ a{
     flex-direction: column;
     flex: 1;
     max-width: 900px; /* I'm ensuring that the filter does not become to wide on larger screens*/
-    min-width: 200px; /* Also making sure the minimum width does not go below 200px */
-    max-height: 300vh; /* I'm making sure it doesn't exceed 90% of the viewport height */
+    min-width: 300px; /* Also making sure the minimum width does not go below 200px */
     border-right:1px solid #dbdbdb;
     padding-right:20px;
 }
@@ -489,4 +488,16 @@ input[type="range"]::-webkit-slider-thumb {
     width:100%;
     height: 120px;
     object-fit: cover;
+}
+
+#filterByPriceMinInput{
+    margin-top:8px;
+}
+
+#filterByPriceMaxInput{
+     margin-top:8px;
+ }
+
+#filterByPrice{
+    margin-top:15px;
 }
