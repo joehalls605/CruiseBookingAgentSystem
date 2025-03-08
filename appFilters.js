@@ -67,29 +67,27 @@ export function applyFilters() {
         if (destination && element.destination !== destination) return false;
 
         // Checking the duration
-        if(duration === 0 || element.duration === duration){
-            return true;
-        }
-
-        const selectedMonths = getSelectedMonths();
-
-        if(!selectedMonths || selectedMonths.length === 0){
-            return true;
-        }
-
-        const departureDate = element.departureDate; // 2025-10-12
-        // Convert departureDate to a month name
-        const dateObj = new Date(departureDate);
-        // Converts the month to its full name
-        const monthName = dateObj.toLocaleString("en-US", {month: "long"});
-
-        if(!selectedMonths.includes(monthName)){
+        if(duration!== 0 && element.duration !== duration){
             return false;
         }
         // Passes all conditions
         return true;
         /* Cruise element passes all conditions*/
     });
+
+    // CHECKING THE CATALOGUE AGAINST THE DATES
+
+    const selectedDates = getSelectedMonths();
+
+    if(selectedDates && selectedDates.length > 0){
+        filteredCatalogue = filteredCatalogue.filter(item => {
+            const departureDate = item.departureDate;
+            const dateObj = new Date(departureDate);
+            const monthName = dateObj.toLocaleString("en-US", {month: "long"});
+            return selectedDates.includes(monthName);
+        })
+    }
+
 
     const discountPercentage = Number(discountRange.value) || 0;
 

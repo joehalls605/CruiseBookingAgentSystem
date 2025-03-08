@@ -31,22 +31,21 @@ if(dateButtonElement){
     }
 
     function confirmDateOptions() {
-        let selectedMonths = [];
         const checkboxes = document.querySelectorAll('#datesOptions input[type="checkbox"]');
 
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedMonths.push(checkbox.dataset.month);
             }
-            getSelectedMonths(selectedMonths);
         });
         closeBtnElementHandler(); // Hide the modal after confirming
-        console.log(selectedMonths); // Log selected months
+        console.log("THESE MONTHS SELECTED:" + selectedMonths); // Log selected months
     }
 }
 
-export function getSelectedMonths(selectedMonths) {
-  return selectedMonths;
+export function getSelectedMonths() {
+    console.log("THESE MONTHS SELECTED IN getSelectedMonths:" + selectedMonths);
+    return selectedMonths;
 }
 
 
