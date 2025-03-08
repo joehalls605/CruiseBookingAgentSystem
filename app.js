@@ -12,7 +12,7 @@ import {
 } from './appRenderFunctions.js';
 
 // ===================== GLOBAL VARIABLES =====================
-export let cruiseCatalogue = []; // Holds the cruise catalogue data
+export let cruiseCatalogue = []; // Holds the currently displayed cruise catalogue data
 
 // ===================== INITIALISE COMPONENTS =====================
 initSidebar();

@@ -1,7 +1,8 @@
 // Contains the search functionality.
 
 
-import { renderCruiseCatalogue } from '../appRenderFunctions.js';
+import {renderCruiseCatalogue
+} from '../appRenderFunctions.js';
 import { cruiseCatalogue } from '../app.js';
 
 export function applySearch() {

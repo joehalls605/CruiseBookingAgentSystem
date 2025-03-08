@@ -11,16 +11,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("shipName").textContent = selectedCruise.ship;
         document.getElementById("duration").textContent = `${selectedCruise.duration} nights`;
         document.getElementById("price").textContent = `£${selectedCruise.pricePerPerson} (PP)`;
-
-        const cabins = selectedCruise.cabins[0];
-        document.getElementById("interiorCabin").textContent = `Interior Cabin: ${cabins.interiorCabin.roomsAvailable}`;
-        document.getElementById("oceanViewCabin").textContent = `Ocean View Cabin: ${cabins.oceanViewCabin.roomsAvailable}`;
-        document.getElementById("suiteCabin").textContent = `Deluxe Suite: ${cabins.suiteCabin.roomsAvailable}`;
     }
 
     // Set up form input elements
     const firstNameInput = document.getElementById("firstName");
     const surnameInput = document.getElementById("surname");
+
+    const cabinDropdown = document.getElementById("cabinDropdown");
+    cabinDropdown.innerHTML = "";
+
+    const cabinData = selectedCruise.cabins[0]; // grabbing the outer object in cabins array
+    for(const [cabinType, details] of Object.entries(cabinData)){
+        const newOption = document.createElement("option");
+        newOption.value = cabinType;
+        newOption.textContent = `${cabinType + "-" + "Rooms available:" + details.roomsAvailable}`
+        cabinDropdown.appendChild(newOption);
+    }
 
     // Listen for the Confirm Booking button click
     document.getElementById("confirmBooking").addEventListener("click", async function () {
@@ -31,6 +37,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             alert("Please fill in all fields.");
             return;
         }
+
+
 
         // Construct new booking object with the correct field names for MongoDB
         const newBooking = {

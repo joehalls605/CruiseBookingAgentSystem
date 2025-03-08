@@ -1,8 +1,8 @@
 // Import needed functions
 import { renderCruiseCatalogue } from './appRenderFunctions.js';
-import { cruiseCatalogue } from './app.js';
 import {getSelectedMonths} from './components/dateModal.js';
 import {storeDestination} from './storeDestination.js';
+import {cruiseCatalogue} from './app.js';
 
 const applyFiltersButton = document.getElementById("applyFilters");
 if (applyFiltersButton) {
@@ -108,6 +108,8 @@ export function applyFilters() {
         }
     })
 
+
+
     console.log(discountedCatalogue);
     // exporting discounted catalogue for use in newBooking.js
 
@@ -116,6 +118,11 @@ export function applyFilters() {
     const bookingDetails = {
         bookings: discountedCatalogue
     };
+
+    // The actively displayed cruise catalogue
+    // Rest the catalogue first, then push latest catalogue
+    cruiseCatalogue.length = 0;
+    cruiseCatalogue.push(...discountedCatalogue);
 
     renderCruiseCatalogue(discountedCatalogue);  // Render filtered results
 }

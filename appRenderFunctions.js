@@ -72,7 +72,7 @@ export function sortByOptionsRender(){
 
     const defaultOption = document.createElement("option");
     defaultOption.textContent = "Price (Low to high)";
-    defaultOption.value = "price-low" // ? adjust value maybe
+    defaultOption.value = "price-low"
     sortByElement.appendChild(defaultOption);
 
     const options = [
