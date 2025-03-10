@@ -1,6 +1,8 @@
 // bookings.js
 console.log("Bookings.js filed loaded");
+import { initSidebar } from './components/sidebar.js';
 
+initSidebar();
 
 async function fetchBookingsFromServer() {
     try{

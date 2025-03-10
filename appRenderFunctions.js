@@ -1,9 +1,9 @@
 // Render cruise catalogue and destinations
 export function renderCruiseCatalogue(cruiseCatalogue) {
-
     const cruiseCatalogueElement = document.getElementById("cruiseCatalogue");
 
-    const html = cruiseCatalogue.map(item => `
+    if(cruiseCatalogue){
+        const html = cruiseCatalogue.map(item => `
         <div class="cruise-item">
         <img class="cruise-item-image" src="${item.imageUrl}">
         <h3>${item.cruiseTitle}</h3>
@@ -22,48 +22,54 @@ export function renderCruiseCatalogue(cruiseCatalogue) {
         </div>
     `).join("");
 
-    cruiseCatalogueElement.innerHTML = html;
+        cruiseCatalogueElement.innerHTML = html;
+    }
 }
+
 
 export function renderCruiseDestinations(cruiseDestinations) {
     const destinationOptionsElement = document.getElementById("destinationOptions");
+    if(destinationOptionsElement){
+// Clearing existing options
+        destinationOptionsElement.innerHTML = "";
 
-    // Clearing existing options
-    destinationOptionsElement.innerHTML = "";
+        // Creating a default choose destination option
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "Any";
+        defaultOption.value = "";
+        destinationOptionsElement.appendChild(defaultOption);
 
-    // Creating a default choose destination option
-    const defaultOption = document.createElement("option");
-    defaultOption.textContent = "Any";
-    defaultOption.value = "";
-    destinationOptionsElement.appendChild(defaultOption);
-
-    // Adding destinations as options
-    cruiseDestinations.forEach(destination => {
-        const optionElement = document.createElement("option");
-        optionElement.textContent = destination;
-        optionElement.value = destination;
-        destinationOptionsElement.appendChild(optionElement);
-    });
+        // Adding destinations as options
+        cruiseDestinations.forEach(destination => {
+            const optionElement = document.createElement("option");
+            optionElement.textContent = destination;
+            optionElement.value = destination;
+            destinationOptionsElement.appendChild(optionElement);
+        });
+    }
 }
 
 export function renderDurationOptions(cruiseDurations){
     console.log("cruise destinations",cruiseDurations);
     const durationOptionsElement = document.getElementById("durationOptions");
 
-    durationOptionsElement.innerHTML = "";
+    if(durationOptionsElement){
+        durationOptionsElement.innerHTML = "";
 
-    const defaultOption = document.createElement("option");
-    defaultOption.textContent = "Any";
-    defaultOption.value = "Any";
-    durationOptionsElement.appendChild(defaultOption);
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "Any";
+        defaultOption.value = "Any";
+        durationOptionsElement.appendChild(defaultOption);
 
-    // Adding durations as options
-    cruiseDurations.forEach(duration => {
-        const optionElement = document.createElement("option");
-        optionElement.textContent = `${duration} days`
-        optionElement.value = duration;
-        durationOptionsElement.appendChild(optionElement);
-    })
+        // Adding durations as options
+        cruiseDurations.forEach(duration => {
+            const optionElement = document.createElement("option");
+            optionElement.textContent = `${duration} days`
+            optionElement.value = duration;
+            durationOptionsElement.appendChild(optionElement);
+        })
+    }
+
 }
 
 export function sortByOptionsRender(){
@@ -71,14 +77,15 @@ export function sortByOptionsRender(){
     sortByElement.innerHTML = "";
 
     const defaultOption = document.createElement("option");
-    defaultOption.textContent = "Price (Low to high)";
-    defaultOption.value = "price-low"
+    defaultOption.textContent = "Best match";
+    defaultOption.value = "";
     sortByElement.appendChild(defaultOption);
 
     const options = [
-        {value: "price-high", text: "Price (High to low)"},
-        {value: "duration-high", text: "Duration (Low to high)"},
-        {value: "duration-low", text: "Duration (High to low)"}
+        {value: "price-low", text: "Price (low to high)"},
+        {value: "price-high", text: "Price (high to low)"},
+        {value: "duration-high", text: "Duration (low to high)"},
+        {value: "duration-low", text: "Duration (high to low)"}
     ];
 
     options.forEach(option => {

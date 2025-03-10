@@ -100,6 +100,12 @@ document.addEventListener("click", function (event) {
 // Handle Sort Change
 function sortByUpdate() {
     const currentSortValue = sortByElement.value;
+
+    if(!currentSortValue){
+        // If "Best match" (empty value) is selected, do nothing or reset to default data
+        renderCruiseCatalogue(cruiseCatalogue);
+    }
+
     let sortedCatalogue;
 
     // Sort by price (low to high)
