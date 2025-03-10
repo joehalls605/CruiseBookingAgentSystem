@@ -60,16 +60,21 @@ document.addEventListener("DOMContentLoaded", initialiseBookings);
 
 // CREATING A NEW BOOKING
 
+const cabinType = document.getElementById("cabinType");
+const selectedCabin = cabinType.value;
+
 document.getElementById("new-booking-form").addEventListener("submit", async function(event){
     event.preventDefault(); // prevents the default form submission
 
 
     const newBookingData = {
         bookingId: document.getElementById("newBookingId").value,
-        passengerName: document.getElementById("newPassengerName").value,
+        firstName: document.getElementById("firstName").value,
+        surname: document.getElementById("surname").value,
         cruiseDestination: document.getElementById("newCruiseDestination").value,
         departureDate: document.getElementById("newDepartureDate").value,
-        status: document.getElementById("newStatus").value
+        status: document.getElementById("newStatus").value,
+        cabinType: selectedCabin
     };
 
     try{
@@ -115,9 +120,13 @@ function renderBookings(bookings) {
         bookingIdCell.textContent = booking.bookingId;
         row.appendChild(bookingIdCell);
 
-        const passengerNameCell = document.createElement('td');
-        passengerNameCell.textContent = booking.passengerName;
-        row.appendChild(passengerNameCell);
+        const firstNameCell = document.createElement('td');
+        firstNameCell.textContent = booking.firstName;
+        row.appendChild(firstNameCell);
+
+        const surnameCell = document.createElement('td');
+        surnameCell.textContent = booking.surname;
+        row.appendChild(surnameCell);
 
         const cruiseDestinationCell = document.createElement('td');
         cruiseDestinationCell.textContent = booking.cruiseDestination;
@@ -130,6 +139,10 @@ function renderBookings(bookings) {
         const statusCell = document.createElement('td');
         statusCell.textContent = booking.status;
         row.appendChild(statusCell);
+
+        const cabinCell = document.createElement('td');
+        cabinCell.textContent = booking.cabinType;
+        row.appendChild(cabinCell);
 
         const deleteButton = document.createElement("img");
         deleteButton.src = "./images/edit.png";

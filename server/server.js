@@ -39,13 +39,21 @@ const bookingSchema = {
         required: true,
         unique: true
     },
-    passengerName: {
+    firstName: {
         type: String,
         required: true
     },
-    cruiseDestination: {    // Make sure this matches your DB field
+    surname:{
         type: String,
         required: true
+    },
+    cruiseDestination: {
+        type: String,
+        required: true
+    },
+    cabinType:{
+        type: String,
+        enum: ["interiorCabin", "oceanViewCabin", "Suite"]
     },
     departureDate: {
         type: String,
@@ -85,20 +93,22 @@ app.get("/bookings", async(req, res) => {
 app.post("/bookings", async (req, res) => {
     try{
         // Destructuring (pull out) the data from req.body so I can use the variables
-        const { bookingId, passengerName, cruiseDestination, departureDate, status} = req.body;
+        const { bookingId, firstName, surname, cruiseDestination, cabinType, departureDate, status} = req.body;
 
         // Checking all fields are present
-        if(!bookingId || !passengerName || !cruiseDestination || !departureDate || !status){
+        if(!bookingId || !firstName || !surname || !cruiseDestination || !departureDate || !status || !cabinType){
             return res.status(400).send("All fields are required");
         }
 
         // Create a new booking instance
         const newBooking = new Booking({
             bookingId,
-            passengerName,
+            firstName,
+            surname,
             cruiseDestination,
             departureDate,
-            status
+            status,
+            cabinType
         });
 
         // Save to database

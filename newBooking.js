@@ -20,11 +20,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const cabinDropdown = document.getElementById("cabinDropdown");
     cabinDropdown.innerHTML = "";
 
+    // Rendering the cabins dropdown
     const cabinData = selectedCruise.cabins[0]; // grabbing the outer object in cabins array
     for(const [cabinType, details] of Object.entries(cabinData)){
         const newOption = document.createElement("option");
         newOption.value = cabinType;
-        newOption.textContent = `${cabinType + "-" + "Rooms available:" + details.roomsAvailable}`
+        newOption.textContent = `${cabinType}`
         cabinDropdown.appendChild(newOption);
     }
 
@@ -32,22 +33,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("confirmBooking").addEventListener("click", async function () {
         const firstName = firstNameInput.value;
         const surname = surnameInput.value;
+        const selectedCabinType = cabinDropdown.value;
+        console.log("this is the selected cabin type from dropdown " + selectedCabinType);
 
         if (!firstName || !surname) {
             alert("Please fill in all fields.");
             return;
         }
 
-
-
         // Construct new booking object with the correct field names for MongoDB
         const newBooking = {
             bookingId: `B${Date.now()}`,  // Unique bookingId based on the timestamp
-            passengerName: `${firstName} ${surname}`,
+            firstName: `${firstName}`,
+            surname: `${surname}`,
             cruiseDestination: selectedCruise.cruiseTitle,
             departureDate: selectedCruise.departureDate,  // Assuming departureDate exists in selectedCruise
-            status: "Pending"  // Default status is "Pending"
+            status: "Pending",  // Default status is "Pending"
+            cabinType: selectedCabinType
         };
+        console.log("this is the new booking:", newBooking);
 
         // Send POST request to create new booking
         try {
