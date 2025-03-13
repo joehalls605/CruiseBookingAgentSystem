@@ -1,32 +1,31 @@
+/* Global Variables */
+:root {
+    --primary-grey: #F5F5F5;
+    --primary-button-blue: #175f9c;
+    --primary-button-dark-blue: #073b69;
+}
+
+/* Font Imports */
 @font-face {
     font-family: 'Poppins';
     src: url('./font/Poppins/Poppins-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
-h2{
-    margin:0px;
-    padding:0px;
-}
 
-body{
-    margin:0px;
-}
-
-:root{
-    --primary-grey: #F5F5F5; /* Declaring a colour variable for use*/
-    --primary-button-blue: #175f9c;
-    --primary-button-dark-blue: #073b69;
-
-}
-
+/* General Body & HTML Styling */
 html {
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     background-color: var(--primary-grey);
 }
 
-html.darkMode{
+body {
+    margin: 0;
+}
+
+/* Dark Mode Styles */
+html.darkMode {
     background-color: #121212;
     color: #f5f5f5;
     --primary-grey: #B0B0B0;
@@ -34,95 +33,91 @@ html.darkMode{
     --primary-button-dark-blue: #0c2c4e;
 }
 
-html.darkMode h1{
-    color:white;
+html.darkMode h1 {
+    color: white;
 }
 
-html.darkMode .cruise-item{
-    color:black;
-}
-html.darkMode #booking-table{
-    color:black;
+html.darkMode .cruise-item {
+    color: black;
 }
 
-html.smallFont{
+html.darkMode #booking-table {
+    color: black;
+}
+
+/* Font Size Customizations */
+html.smallFont {
     font-size: 14px;
 }
-html.mediumFont{
-    font-size:16px;
-}
-html.largeFont{
-    font-size:18px;
-    padding:0px 20px;
-}
-.data-display-row{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
+
+html.mediumFont {
+    font-size: 16px;
 }
 
-.data-display-item-search{
-    justify-content:flex-end;
+html.largeFont {
+    font-size: 18px;
+    padding: 0px 20px;
 }
 
-
-#header{
+/* Header */
+#header {
     display: flex;
-    justify-content: space-between; /* I'm using space-between to push the items to either side.*/
+    justify-content: space-between;
     align-items: center;
-    height: 10vh; /* Setting the header as always 10% of the viewport height*/
-    overflow: visible; /* The content overflows the container and displays outside of it if needed.*/
-    /* position: static; This works by default, this is positioned according to normal flow of the document */
-    position: relative; /* This means the element is positioned relative to normal position. Now I can use top:*/
-    top:10px;
+    height: 10vh;
+    position: relative;
+    top: 10px;
 }
 
-h1 a{
+/* Header Links */
+h1 a {
     text-decoration: none;
-
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
 
-#nav-links{
+#nav-links {
     text-decoration: none;
     list-style-type: none;
 }
 
-.row{
-    padding-top:20px;
+/* Layout */
+.row {
+    padding-top: 20px;
     display: flex;
     flex-direction: row;
     width: 100%;
     gap: 30px;
 }
 
-#filter-column{
+#filter-column {
     display: flex;
     flex-direction: column;
     flex: 1;
-    max-width: 900px; /* I'm ensuring that the filter does not become to wide on larger screens*/
-    min-width: 300px; /* Also making sure the minimum width does not go below 200px */
-    border-right:1px solid #dbdbdb;
-    padding-right:20px;
+    max-width: 900px;
+    min-width: 300px;
+    border-right: 1px solid #dbdbdb;
+    padding-right: 20px;
 }
 
-#data-display-column{
+#data-display-column {
     display: flex;
     flex-direction: column;
     flex: 2;
 }
 
-#cruiseCatalogue{
+/* Cruise Catalogue */
+#cruiseCatalogue {
     display: grid;
-    grid-template-columns: repeat(2,1fr); /* 2 columns of equal width*/
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-.cruise-item{
-    background-color: #FFFF;
+.cruise-item {
+    background-color: #FFF;
     padding: 15px;
     margin: 10px 0;
     border-radius: 8px;
@@ -130,31 +125,27 @@ a{
     flex-direction: column;
 }
 
+.cruise-item-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Input Styling */
 input[type="text"],
 input[type="search"],
 input[type="number"],
-select{
+select {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
 }
 
-input::placeholder{
+input::placeholder {
     font-family: 'Poppins', sans-serif;
 }
 
-@media screen and (max-width:600px) {
-    #filter-column, #data-display-column{
-        width: 100%;
-    }
-    .row{
-        flex-direction: column;
-    }
-}
-
-
-
-
-button{
+/* Button Styling */
+button {
     background-color: var(--primary-button-blue);
     border-radius: 50px;
     text-transform: uppercase;
@@ -163,16 +154,12 @@ button{
     font-family: 'Poppins';
     margin-top: 20px;
     color: white;
-    border: 0px;
+    border: 0;
     font-weight: 400;
     transition: background-color 0.3s ease;
 }
 
-#datesButton {
-    background-color: grey;
-}
-
-button:hover{
+button:hover {
     background-color: var(--primary-button-dark-blue);
     cursor: pointer;
 }
@@ -181,50 +168,10 @@ button:active {
     background-color: #01111f;
 }
 
-
-/* Price slider */
-
-.price-slider{
-    display: flex;
-    align-items: center;
-    gap:10px;
-}
-
-input[type="number"]{
-    width:70px;
-    padding: 5px;
-    font-size: 10px;
-}
-
-input[type="range"]{
-    appearance: none;
-    width: 150px;
-    height: 6px;
-    background-color: #ddd;
-    border-radius: 5px;
-    outline: none;
-    position: relative; /* Why this used? */
-}
-
-input[type="range"]::-webkit-slider-thumb{
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #0078d7;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-}
-
-
-/* SIDE BAR*/
-
-
-
-#sidebar{
+/* Sidebar Styling */
+#sidebar {
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     height: 100vh;
     width: 200px;
@@ -235,14 +182,13 @@ input[type="range"]::-webkit-slider-thumb{
     display: flex;
     flex-direction: column;
     transform: translateX(-170px);
-
 }
 
 #sidebar.open {
-    transform: translateX(0); /* Fully visible when open */
+    transform: translateX(0);
 }
 
-#content-wrapper{
+#content-wrapper {
     margin-left: 40px;
     transition: margin-left 0.3s ease;
 }
@@ -251,7 +197,7 @@ input[type="range"]::-webkit-slider-thumb{
     margin-left: 210px;
 }
 
-.toggle-row{
+.toggle-row {
     display: flex;
     justify-content: flex-end;
     margin-right: 14px;
@@ -259,7 +205,7 @@ input[type="range"]::-webkit-slider-thumb{
 
 #toggle-btn {
     position: relative;
-    left:3px;
+    left: 3px;
     width: 16px;
     height: 16px;
     align-items: flex-end;
@@ -267,13 +213,11 @@ input[type="range"]::-webkit-slider-thumb{
     transition: transform 0.3s ease;
 }
 
-#toggle-btn.rotated{
-    left:3px;
+#toggle-btn.rotated {
     transform: rotate(180deg);
 }
 
-#toggle-btn :hover{
-    left:3px;
+#toggle-btn:hover {
     cursor: pointer;
 }
 
@@ -283,7 +227,7 @@ input[type="range"]::-webkit-slider-thumb{
     color: white;
 }
 
-#sidebar-links li{
+#sidebar-links li {
     padding: 10px 15px;
     color: white;
 }
@@ -294,6 +238,69 @@ input[type="range"]::-webkit-slider-thumb{
     font-size: 18px;
     display: block;
 }
+
+/* Modal Styling */
+#modal {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background-color: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+#modal.visible {
+    transform: translateX(-50%) translateY(-140%);
+    opacity: 1;
+}
+
+/* Filters Section */
+#filterByDestination,
+#filterByDuration,
+#filterByPrice,
+#filterBySlider,
+#filterByDate {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#applyDiscount {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#discountRange {
+    width: 240px;
+    margin-top: 10px;
+}
+
+#discountValue {
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    #filter-column, #data-display-column {
+        width: 100%;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 768px) {
     #sidebar {
         width: 200px;
@@ -304,115 +311,79 @@ input[type="range"]::-webkit-slider-thumb{
     }
 }
 
-#applyDiscount{
-    margin-top: 15px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+/* SLIDER LOGIC */
+
+
+input[type="number"]{
+    width: 70%;
+    padding:5px;
+    margin-bottom:10px;
 }
 
-#discountRange{
-    width:240px;
-    margin-top: 10px;
-}
-#discountValue{
-    margin-top:2px;
-    margin-bottom:0px;
-}
-
-#modal{
-    position: absolute;
-    top: 100%; /* Start off screen */
-    left: 50%; /* ? */
-    transform: translateX(-50%) translateY(100%);;
-    background-color: white;
-    width:90%;
-    max-width:600px;
-    padding:20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 1000;
-}
-#modal.visible{
-    transform: translateX(-50%) translateY(-140%);
-    opacity: 1;
-}
-
-/* DISCOUNT RANGE */
-.range-input {
-    position: relative;
-    width: 100%;
-    margin-top:15px;
-}
-
-/* Styling for the progress bars */
-.range-input .progress {
+/* The main slider bar */
+input[type="range"] {
+    appearance: none;
+    width: 150px;
     height: 6px;
-    width: 40%;
-    background-color: #0078d7; /* Blue progress bar */
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
 }
 
 
-.deleteBtn {
-    width: 30px;
+/* The draggable circle on the range slider customised*/
+input[type="range"]::-webkit-slider-thumb{
+    appearance:none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0078d7;
+    cursor: pointer;
 }
 
-/* PRICE SLIDER */
-
-/* PRICE SLIDER */
-/* PRICE SLIDER */
-.slider {
+/* the outer container for the slider an its elements */
+.slider{
     position: relative;
     width: 100%;
     max-width: 400px;
-
 }
 
-.slider::before {
-    content: "";
-    position: absolute;
+/* this ::before element creates a background track for the slider*/
+/* note - the outer slider is relative so before element will be positioned within that */
+/* note - this is not the progress bar itself, it is just the background that the slider thumbs move along */
+
+.slider::before{
+    content:""; /* required for ::before element to appear*/
+    position: absolute; /* absolute is used to place it behind other elements*/
     width: 100%;
-    height: 5px;
-    background: #e0e0e0;
+    height:5px;
+    background:#e0e0e0;
     border-radius: 5px;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 0; /* with z index ensuring that it is behind */
 }
 
-.range-input {
-    position: relative;
-    width: 100%;
-    height: 5px;
+.range-input{
+    position:relative;
+    width:100%;
+    height:5px;
 }
 
-.range-input input {
+/* I remove the background of the range input so it appears to be one with the slider*/
+.range-input input{
     position: absolute;
-    width: 100%;
-    height: 5px;
-    -webkit-appearance: none;
-    background: none;
-    pointer-events: none;
-    z-index: 2;
+    width:100%;
+    height:5px;
+    background:none;
+    z-index:3;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: #007bff;
-    border-radius: 50%;
-    cursor: pointer;
-    pointer-events: auto;
-    z-index: 3;
-}
-
-.progress {
-    position: absolute;
-    height: 5px;
-    background: #007bff;
+/* progress is the active portion of the slider between the min and max values*/
+.progress{
+    position:absolute;
+    height:5px;
+    background:#007bff;
     border-radius: 5px;
     z-index: 1;
     left: 0;
@@ -422,82 +393,15 @@ input[type="range"]::-webkit-slider-thumb {
 .price-input {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 8px;
 }
 
-.price-input input {
-    width: 45%;
-    padding: 5px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+/* slider endpoints markers both ends of the slider track*/
 
-/* Add these styles for the end points */
 .slider-endpoints {
     position: absolute;
     display: flex;
     justify-content: space-between;
     width: 100%;
     top: -5px;
-
-}
-
-#filterByDestination{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    margin-top:10px;
-
-}
-
-#filterByDuration{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    margin-top:10px;
-
-}
-
-#filterByPrice{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    margin-top:10px;
-}
-
-#filterBySlider{
-    margin-top:18px;
-}
-
-#filterByDate{
-    flex-direction:column;
-    width:100%;
-    margin-top:18px;
-}
-
-#dateButton{
-    margin:0px;
-}
-
-#applyFilters{
-    margin-top:87px;
-}
-
-.cruise-item-image{
-    width:100%;
-    height: 120px;
-    object-fit: cover;
-}
-
-#filterByPriceMinInput{
-    margin-top:8px;
-}
-
-#filterByPriceMaxInput{
-     margin-top:8px;
- }
-
-#filterByPrice{
-    margin-top:15px;
 }
