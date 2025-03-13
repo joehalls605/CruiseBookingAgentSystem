@@ -3,6 +3,8 @@ import { renderCruiseCatalogue } from './appRenderFunctions.js';
 import {getSelectedMonths} from './components/dateModal.js';
 import {storeDestination} from './storeDestination.js';
 import {cruiseCatalogue} from './app.js';
+import { getSliderValues } from './components/priceSlider.js';
+
 
 const applyFiltersButton = document.getElementById("applyFilters");
 if (applyFiltersButton) {
@@ -25,17 +27,22 @@ if(discountRange){
 
 export function applyFilters() {
 
+    let sliderValues = getSliderValues();
+    let minSliderPrice = Number(sliderValues.min);
+    let maxSliderPrice = Number(sliderValues.max);
+
+    console.log("Filter by price:", minSliderPrice, maxSliderPrice);
+
     const applyFiltersButton = document.getElementById("applyFilters");
     if (applyFiltersButton) {
         applyFiltersButton.addEventListener("click", applyFilters);
     }
 
-    const filterByPriceMinInputElement = document.getElementById("filterByPriceMinInput");
-    const filterByPriceMaxInputElement = document.getElementById("filterByPriceMaxInput");
     const durationOptionsElement = document.getElementById("durationOptions");
 
-    const minPrice = Number(filterByPriceMinInputElement.value) || 0;
-    const maxPrice = Number(filterByPriceMaxInputElement.value) || Infinity;
+    // FILTER BY PRICE
+    const minPrice = minSliderPrice;
+    const maxPrice = maxSliderPrice;
 
     const destinationElement = document.getElementById("destinationOptions");
     const destination = destinationElement.value;
@@ -98,7 +105,6 @@ export function applyFilters() {
 
         const discountedPrice = item.pricePerPerson * (1 - discountPercentage / 100);
         const roundedPrice = Math.round(discountedPrice * 100) / 100;
-        console.log("Price:", item.pricePerPerson, "Discount:", discountPercentage);
         return {
             ...item, // copy existing properties
             pricePerPerson: roundedPrice // Update the price with discounted value

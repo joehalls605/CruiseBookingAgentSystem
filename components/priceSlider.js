@@ -1,3 +1,9 @@
+// Global variables to store slider values
+let currentMinValue = null;
+let currentMaxValue = null;
+
+
+
 // range slider circles
 const sliderMin = document.querySelector('.range-min'); // Selects the minimum range slider
 const sliderMax = document.querySelector('.range-max'); // Selects the maximum range slider
@@ -17,10 +23,8 @@ function updateSliderUI(){
     // Ensure that the minimum slider value is always less than the maximum slider value
     if (sliderMinValue >= sliderMaxValue) {
         sliderMin.value = sliderMaxValue - 100;
-        console.log("min value"+sliderMinValue);
     }
     if (sliderMaxValue <= sliderMinValue) {
-        console.log("max value"+sliderMaxValue);
         sliderMax.value = sliderMinValue + 100;
     }
 
@@ -36,6 +40,12 @@ function updateSliderUI(){
     // Update the input fields with the current slider values
     numberInputMin.value = sliderMin.value; // Set the value of the minimum input field
     numberInputMax.value = sliderMax.value; // Set the value of the maximum input field
+
+    // Adding to global variables for use in other files.
+    currentMinValue = sliderMin.value;
+    currentMaxValue = sliderMax.value;
+    console.log(currentMinValue, currentMaxValue);
+
 }
 
 // Event listeners to update the UI whenever the slider values change
@@ -55,3 +65,10 @@ numberInputMax.addEventListener("change", ()=>{
 
 // Initial setup to display the correct UI state
 updateSliderUI();
+
+export function getSliderValues(){
+    return{
+        min: currentMinValue,
+        max: currentMaxValue
+    }
+}
