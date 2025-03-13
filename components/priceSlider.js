@@ -1,40 +1,48 @@
 // range slider circles
-const sliderMin = document.querySelector('.range-min');
-const sliderMax = document.querySelector('.range-max');
+const sliderMin = document.querySelector('.range-min'); // Selects the minimum range slider
+const sliderMax = document.querySelector('.range-max'); // Selects the maximum range slider
 
 // progress bar
-const progressBar = document.querySelector('.progress');
+const progressBar = document.querySelector('.progress'); // Selects the progress bar element
 
 // price input fields
-const numberInputMin = document.querySelector('.input-min');
-const numberInputMax = document.querySelector('.input-max');
+const numberInputMin = document.querySelector('.input-min'); // Selects the minimum price input field
+const numberInputMax = document.querySelector('.input-max'); // Selects the maximum price input field
 
+// Function to update the UI of the slider and progress bar
 function updateSliderUI(){
     const sliderMinValue = parseInt(sliderMin.value);
     const sliderMaxValue = parseInt(sliderMax.value);
 
-    if (sliderMinValue >= sliderMaxValue - 100) {
+    // Ensure that the minimum slider value is always less than the maximum slider value
+    if (sliderMinValue >= sliderMaxValue) {
         sliderMin.value = sliderMaxValue - 100;
+        console.log("min value"+sliderMinValue);
     }
-    if (sliderMaxValue <= sliderMinValue + 100) {
+    if (sliderMaxValue <= sliderMinValue) {
+        console.log("max value"+sliderMaxValue);
         sliderMax.value = sliderMinValue + 100;
     }
 
-
+    // Calculate the positions of the sliders as a percentage of their maximum value
     const minPosition = (sliderMin.value / sliderMin.max * 100);
     const maxPosition = (sliderMax.value / sliderMax.max * 100);
 
+
+    // Update the progress bar's left and right positions based on the slider values
     progressBar.style.left = `${minPosition}%`;
     progressBar.style.right = `${100 - maxPosition}%`;
 
-    sliderMin.value = numberInputMin.value;
-    sliderMax.value = numberInputMax.value;
+    // Update the input fields with the current slider values
+    numberInputMin.value = sliderMin.value; // Set the value of the minimum input field
+    numberInputMax.value = sliderMax.value; // Set the value of the maximum input field
 }
 
-// Event listeners to activate sliders
-sliderMin.addEventListener("change", updateSliderUI);
-sliderMax.addEventListener("change", updateSliderUI);
+// Event listeners to update the UI whenever the slider values change
+sliderMin.addEventListener("input", updateSliderUI);
+sliderMax.addEventListener("input", updateSliderUI);
 
+// Event listeners for when the input fields change, to update the corresponding slider
 numberInputMin.addEventListener("change", ()=>{
     sliderMin.value = numberInputMin.value;
     updateSliderUI();
@@ -45,7 +53,5 @@ numberInputMax.addEventListener("change", ()=>{
     updateSliderUI();
 });
 
-// Initial setup
+// Initial setup to display the correct UI state
 updateSliderUI();
-
-

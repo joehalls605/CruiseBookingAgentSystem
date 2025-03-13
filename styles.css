@@ -313,11 +313,10 @@ button:active {
 
 /* SLIDER LOGIC */
 
-
-input[type="number"]{
-    width: 70%;
-    padding:5px;
-    margin-bottom:10px;
+input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    font-size: 10px;
 }
 
 /* The main slider bar */
@@ -330,62 +329,60 @@ input[type="range"] {
     outline: none;
 }
 
-
-/* The draggable circle on the range slider customised*/
-input[type="range"]::-webkit-slider-thumb{
-    appearance:none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #0078d7;
-    cursor: pointer;
-}
-
 /* the outer container for the slider an its elements */
-.slider{
-    position: relative;
+.slider {
+    position: relative; /* using position relative to tell child items to remain relative inside the div position, not outside of it*/
     width: 100%;
     max-width: 400px;
 }
 
 /* this ::before element creates a background track for the slider*/
-/* note - the outer slider is relative so before element will be positioned within that */
+/* note - the outer slider is relative so before element will be positioned within that*/
 /* note - this is not the progress bar itself, it is just the background that the slider thumbs move along */
-
-.slider::before{
-    content:""; /* required for ::before element to appear*/
+.slider::before {
+    content: ""; /* required for ::before element to appear*/
     position: absolute; /* absolute is used to place it behind other elements*/
     width: 100%;
-    height:5px;
-    background:#e0e0e0;
+    height: 5px;
+    background: #e0e0e0;
     border-radius: 5px;
     top: 0;
     left: 0;
-    z-index: 0; /* with z index ensuring that it is behind */
+    z-index: 0; /* with z index ensuring that happens */
 }
 
-.range-input{
-    position:relative;
-    width:100%;
-    height:5px;
+.range-input {
+    position: relative;
+    width: 100%;
+    height: 5px;
 }
 
-/* I remove the background of the range input so it appears to be one with the slider*/
-.range-input input{
+.range-input input {
     position: absolute;
-    width:100%;
-    height:5px;
-    background:none;
-    z-index:3;
+    width: 100%;
+    height: 5px;
+    background: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 3;
 }
 
 /* progress is the active portion of the slider between the min and max values*/
-.progress{
-    position:absolute;
-    height:5px;
-    background:#007bff;
+.progress {
+    position: absolute; /* ensures its layered on top*/
+    height: 5px;
+    background: #007bff;
     border-radius: 5px;
-    z-index: 1;
+    z-index: 1; /* On top because of z index */
     left: 0;
     right: 0;
 }
@@ -393,7 +390,15 @@ input[type="range"]::-webkit-slider-thumb{
 .price-input {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 15px;
+}
+
+.price-input input {
+    width: 45%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 /* slider endpoints markers both ends of the slider track*/
