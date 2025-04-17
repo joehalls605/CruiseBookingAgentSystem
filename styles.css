@@ -1,4 +1,7 @@
 /* Global Variables */
+h1{
+    font-size:30px;
+}
 :root {
     --primary-grey: #F5F5F5;
     --primary-button-blue: #175f9c;
